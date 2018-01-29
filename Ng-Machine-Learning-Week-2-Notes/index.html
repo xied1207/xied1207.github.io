@@ -4,15 +4,24 @@
   <meta name="google-site-verification" content="ilcSPlwwU8KWcf5TTPq1-xut_7sbrE9U5EuF9S1fR88" />
   <meta charset="utf-8">
   
-  <title>董 燮 | Shia</title>
+  <title>[Ng]Machine Learning Week 2 Notes | 董 燮 | Shia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="董 燮 | Shia">
-<meta property="og:url" content="http://xied1207.github.io/index.html">
+  <meta name="description" content="特征缩放 Feature Scaling 通过使输入值在差不多的范围内，从而加快梯度下降的进程：-θ在x范围较小的情况下下降的较快，反之较慢，因而当输入变量的范围不平衡的时候，梯度下降过程会震荡，从而导致达到最优点的过程效率低下。如下图所示。**并不是必须，但是这样能够使梯度下降的速度加快 特征缩放的两种方式：  Feature scaling: input value/range(e.g. ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Ng]Machine Learning Week 2 Notes">
+<meta property="og:url" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/index.html">
 <meta property="og:site_name" content="董 燮 | Shia">
+<meta property="og:description" content="特征缩放 Feature Scaling 通过使输入值在差不多的范围内，从而加快梯度下降的进程：-θ在x范围较小的情况下下降的较快，反之较慢，因而当输入变量的范围不平衡的时候，梯度下降过程会震荡，从而导致达到最优点的过程效率低下。如下图所示。**并不是必须，但是这样能够使梯度下降的速度加快 特征缩放的两种方式：  Feature scaling: input value/range(e.g. ma">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/1.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/2.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/3.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/4.png">
+<meta property="og:updated_time" content="2018-01-29T04:24:03.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="董 燮 | Shia">
+<meta name="twitter:title" content="[Ng]Machine Learning Week 2 Notes">
+<meta name="twitter:description" content="特征缩放 Feature Scaling 通过使输入值在差不多的范围内，从而加快梯度下降的进程：-θ在x范围较小的情况下下降的较快，反之较慢，因而当输入变量的范围不平衡的时候，梯度下降过程会震荡，从而导致达到最优点的过程效率低下。如下图所示。**并不是必须，但是这样能够使梯度下降的速度加快 特征缩放的两种方式：  Feature scaling: input value/range(e.g. ma">
+<meta name="twitter:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -113,11 +122,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-
-    
-    <article id="post-Ng-Machine-Learning-Week-2-Notes" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Ng-Machine-Learning-Week-2-Notes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/Ng-Machine-Learning-Week-2-Notes/" class="article-date">
   <time datetime="2018-01-29T04:20:48.000Z" itemprop="datePublished">2018-01-28</time>
@@ -130,8 +135,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/Ng-Machine-Learning-Week-2-Notes/">[Ng]Machine Learning Week 2 Notes</a>
+    <h1 class="article-title" itemprop="name">
+      [Ng]Machine Learning Week 2 Notes
     </h1>
   
 
@@ -164,116 +169,20 @@
     </footer>
   </div>
   
-</article>
-
-
     
+<nav id="article-nav">
   
-
-    
-    <article id="post-Ng-Machine-Learning-Week-1-Notes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Ng-Machine-Learning-Week-1-Notes/" class="article-date">
-  <time datetime="2018-01-27T21:37:16.000Z" itemprop="datePublished">2018-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/Ng-Machine-Learning-Week-1-Notes/">[Ng]Machine Learning Week 1 Notes</a>
-    </h1>
+    <a href="/Ng-Machine-Learning-Week-1-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[Ng]Machine Learning Week 1 Notes</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><b>What is Machine Learning?机器学习的定义</b></p>
-<p>Two definitions:</p>
-<p>Arthur Samuel described it as: “the field of study that gives computers the ability to learn without being explicitly programmed.” This is an older, informal definition.<br>在没有明确编程代码的情况下能够使计算机具有学习的能力。</p>
-<p>Tom Mitchell provides a more modern definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”<br>经验+任务+表现<br>Example: playing checkers.<br>E = the experience of playing many games of checkers<br>T = the task of playing checkers.<br>P = the probability that the program will win the next game.<br>In general, any machine learning problem can be assigned to one of two broad classifications: Supervised learning and unsupervised learning 监督学习和无监督学习概念。</p>
-<p><b>监督学习Supervised learning</b></p>
-<p>给定数据集（含有正确的输出值，ie输出类型已知）并且已知输入变量和输出变量之间存在关联。<br>-回归问题：预测的输出类型为连续变量<br>-分类问题：预测的输出类型为分类变量</p>
-<p><b>无监督学习 Unsupervised learning</b></p>
-<p>输出结果的类型未知，不知道输入变量和输出变量之间的关系<br>没有办法对预测值进行衡量no feedback<br>依据变量之间的关系进行clustering聚类<br>也有非聚类的分析Non-clustering：Cocktail Party Effect<br>（鸡尾酒会效应（英语：cocktail party effect）是指人的一种听力选择能力，在这种情况下，注意力集中在某一个人的谈话之中而忽略背景中其他的对话或噪音。 该效应揭示了人类听觉系统中令人惊奇的能力，使我们可以在噪声中谈话。）</p>
-<p><b>代价方程/损失方程 Cost Function</b></p>
-<p>用以衡量假设方程的准确度<br><img src="/Ng-Machine-Learning-Week-1-Notes/1.png" alt=""><br>i.e. 平方误差函数，均方误差<br>1/2是为了方便梯度下降计算<br>选择θ0和θ1能够使J最小，从而找到合适的参数</p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/2.png" alt=""><br>图解：同一个环形上θ0和θ1的组合的J相同。最中间的圆心是result（最优解）</p>
-<p><b>梯度下降 Gradient Descent</b></p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/3.png" alt=""><br>用以估计最佳拟合的θ0和θ1<br>Θ0和θ1沿切线下降，系数α决定了每一步下降多少，下降方向由代价方程的偏导数决定<br>不同的起点会最终下降到不同的地方</p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/4.png" alt=""><br>梯度下降算法中需要注意，θ0和θ1需要同步更新</p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/5.png" alt=""><br>当偏导数为正时，参数估计值会变小；偏导数为负时，参数估计值变大，从而是参数估计值趋向于最优解（minimum value）</p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/6.png" alt=""><br>通过调整系数α使梯度下降算法在合理的时间内完成：<br>每一步太小：耗时过长<br>每一步太大：错过最优解（无法聚合）</p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/7.png" alt=""><br>在梯度下降的过程中（聚合的过程中），当接近最优点的时候随着偏导数越来越小，每一步下降的量也会不断减小，所以不需要调整α。</p>
-<p><b>线性回归的梯度下降 Gradient Descent For Linear Regression</b></p>
-<p><img src="/Ng-Machine-Learning-Week-1-Notes/8.png" alt=""></p>
-<p>推导过程：<br><img src="/Ng-Machine-Learning-Week-1-Notes/9.png" alt=""><br>**对于第二步，此时θ0的偏导数为1，θ1的偏导数为Xj<br>对于线性回归问题，只存在一个全局最优解，不存在局部最优解</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-1-Notes/" data-id="cjczpmdys0001qfmbdhd5scdn" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
   
 </article>
 
-
-    
-  
-
-    
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hello-world/" class="article-date">
-  <time datetime="2018-01-23T20:12:41.000Z" itemprop="datePublished">2018-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hello-world/">hello-world</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>A brand-new personal space built on Github;<br>Using for blogging data science study/industry insights/lessons learned;<br>All reserved by Shia Dong(董燮);</p>
-<p>Thanks to tutorial:<br><a href="http://yuweiguocn.github.io/tags/hexo/" target="_blank" rel="noopener">http://yuweiguocn.github.io/tags/hexo/</a><br><a href="https://hexo.io/docs/" target="_blank" rel="noopener">https://hexo.io/docs/</a><br>Thanks to theme from：<br><a href="https://github.com/henryhuang/oishi" target="_blank" rel="noopener">https://github.com/henryhuang/oishi</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://xied1207.github.io/hello-world/" data-id="cjczpmdzb0002qfmbj00xu3a8" class="article-share-link">分享到</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-  
 </section>
         
       </div>
