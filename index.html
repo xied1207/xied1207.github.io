@@ -117,6 +117,62 @@
   
 
     
+    <article id="post-Ng-Machine-Learning-Week-3-Notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ng-Machine-Learning-Week-3-Notes/" class="article-date">
+  <time datetime="2018-01-30T19:53:13.000Z" itemprop="datePublished">2018-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Ng-Machine-Learning-Week-3-Notes/">[Ng]Machine Learning Week 3 Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><b>Classification 分类问题</b></p>
+<p>分类问题不是一个线性函数，它的输出值是几个不连续的值<br>Output y : label for the training example</p>
+<p><b>Logistic Regression Model逻辑回归模型</b></p>
+<p>1.Hypothesis Representation假设<br>通过变换假设的形式，使线性归回的h(x)的值域限定在[0,1]之间；对线性回归方程使用逻辑函数进行变换<br>**Sigmoid函数，i.e.逻辑函数<br>逻辑回归形式：<br><img src="/Ng-Machine-Learning-Week-3-Notes/1.png" alt=""><br>Sigmoid函数的形状：<br><img src="/Ng-Machine-Learning-Week-3-Notes/2.png" alt=""><br>通过sigmoid方程可以将任何数映射到[0,1]的范围内，此时得到的结果为输出值为1的概率（1-输出值为0的概率）</p>
+<p>2.Cost Function 损失函数<br>在逻辑回归中，如果使用和线性回归一样的损失函数，会导致有多个局部最优解（简单推导可知），此时的损失函数不是一个凸函数，因为难以优化参数<br>逻辑回归的损失函数如下：<br><img src="/Ng-Machine-Learning-Week-3-Notes/3.png" alt=""><br>当y=1时，损失方程和输出值的关系为下图：<br><img src="/Ng-Machine-Learning-Week-3-Notes/4.png" alt=""><br>当y=1时，预测值越接近1，损失方程趋近于0，预测值越接近0，损失方程趋近于无限大<br>同样，当y=0时，损失方程和输出值的关系为下图：<br><img src="/Ng-Machine-Learning-Week-3-Notes/5.png" alt=""><br>当y=0时，预测值越接近0，损失方程趋近于0，预测值越接近1，损失方程趋近于无限大<br>此时我们能够确保损失函数是一个凸函数</p>
+<p>3.Simplified Cost Function and Gradient Descent简化的损失函数和梯度下降<br>简化后的损失（易推导）：<br><img src="/Ng-Machine-Learning-Week-3-Notes/6.png" alt=""><br>简化后的损失函数：<br><img src="/Ng-Machine-Learning-Week-3-Notes/7.png" alt=""><br>向量表示：<br><img src="/Ng-Machine-Learning-Week-3-Notes/8.png" alt=""><br>梯度下降方法：同步下降所有的θ<br><img src="/Ng-Machine-Learning-Week-3-Notes/9.png" alt=""><br>向量化表示：<br><img src="/Ng-Machine-Learning-Week-3-Notes/10.png" alt=""></p>
+<p>4.Advanced Optimization 高级参数优化方法<br>共轭下降，BFGS和LBFGS等方法<br><em>*</em>不需要自己写代码，调用package即可</p>
+<p><b>Multiclass Classification多类别分类</b></p>
+<p>当输出结果有n+1个类别时，y={0,1,…,n}，输出结果是概率最大的类别，如下图所示：<br><img src="/Ng-Machine-Learning-Week-3-Notes/11.png" alt=""><br>*每次选择一个类别，将其他所有类别合为一个类别，重复进行二元逻辑回归，最终选择输出概率最大的一个类别作为最终预测<br>i.e. one vs rest：<br><img src="/Ng-Machine-Learning-Week-3-Notes/12.png" alt=""></p>
+<p><b>Solving the problem of overfitting 解决过拟合问题</b></p>
+<p>1.The Problem of Overfitting过拟合问题<br><img src="/Ng-Machine-Learning-Week-3-Notes/13.png" alt=""><br>-简单的线性回归欠拟合underfitting，high bias<br>模型无法很好的刻画出数据的趋势，由于使用的方程太过简单或者输入的特征太少<br>-加入平方项better fit<br>-加入五次方项过拟合overfitting，high variance<br>模型无法很好的刻画出数据的趋势，假设方程很好的拟合给定的训练数据，但是当预测新的数据时表现较差。这是因为复杂的方程中产生了大量与数据本身无关的弯曲。</p>
+<p>*解决过拟合问题的方法：<br>-减少特征数量：手动选择哪些变量可以保留；通过特征选择算法自动减少特征数量到合理值<br>-正则化：保有所有的特征，但是调整系数θ的大小；这种方法可以很好的应用于大量无用特征的情况下</p>
+<p>2.Cost Function 损失函数<br>通过调整损失函数降低高次数项的影响：<br>函数模型：<br><img src="/Ng-Machine-Learning-Week-3-Notes/14.png" alt=""><br>损失函数（降低高次数项后）：高次项系数越大，损失越大<br><img src="/Ng-Machine-Learning-Week-3-Notes/15.png" alt=""><br><img src="/Ng-Machine-Learning-Week-3-Notes/16.png" alt=""><br>由于高次项系数较小，此方程由蓝线修正至粉线<br>正则化后损失函数的一般形式：<br><img src="/Ng-Machine-Learning-Week-3-Notes/17.png" alt=""><br>λ为正则化系数，它决定系数θ的和与损失之间的影响大小，从而可以降低过拟合问题。当λ过大时，会使曲线过于平滑，导致欠拟合underfitting，当λ太小时，没有办法使曲线平滑，依然存在过拟合overfitting</p>
+<p>3.Regularized Linear Regression正则化的线性回归<br>梯度下降：<br><img src="/Ng-Machine-Learning-Week-3-Notes/18.png" alt=""><br>整理公式为：<br><img src="/Ng-Machine-Learning-Week-3-Notes/19.png" alt=""><br>正规方程：<br><img src="/Ng-Machine-Learning-Week-3-Notes/20.png" alt=""><br>4.Regularized Logistic Regression正则化的逻辑回归<br>损失函数：<br><img src="/Ng-Machine-Learning-Week-3-Notes/21.png" alt=""><br>梯度下降：<br><img src="/Ng-Machine-Learning-Week-3-Notes/22.png" alt=""></p>
+<p>**进行正则化时对bias term（i.e. x0）的系数不进行正则化修正</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-3-Notes/" data-id="cjd22kog70002xnblakt4p0hs" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-Ng-Machine-Learning-Week-2-Notes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/Ng-Machine-Learning-Week-2-Notes/" class="article-date">
@@ -131,7 +187,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Ng-Machine-Learning-Week-2-Notes/">[Ng]Machine Learning Week 2 Notes</a>
+      <a class="article-title" href="/Ng-Machine-Learning-Week-2-Notes/">[Ng]Machine Learning Week 2 Notes 多元线性回归</a>
     </h1>
   
 
@@ -157,7 +213,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/" data-id="cjczpmdyp0000qfmbsch2ktxh" class="article-share-link">分享到</a>
+        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-2-Notes/" data-id="cjd22kog50001xnblf6ry9y26" class="article-share-link">分享到</a>
       
 
       
@@ -185,7 +241,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Ng-Machine-Learning-Week-1-Notes/">[Ng]Machine Learning Week 1 Notes</a>
+      <a class="article-title" href="/Ng-Machine-Learning-Week-1-Notes/">[Ng]Machine Learning Week 1 Notes 导论</a>
     </h1>
   
 
@@ -218,7 +274,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-1-Notes/" data-id="cjczpmdys0001qfmbdhd5scdn" class="article-share-link">分享到</a>
+        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-1-Notes/" data-id="cjd22kog00000xnbl5c6bw70x" class="article-share-link">分享到</a>
       
 
       
@@ -261,7 +317,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://xied1207.github.io/hello-world/" data-id="cjczpmdzb0002qfmbj00xu3a8" class="article-share-link">分享到</a>
+        <a data-url="http://xied1207.github.io/hello-world/" data-id="cjd22kog90003xnbl0k9eq7w8" class="article-share-link">分享到</a>
       
 
       
