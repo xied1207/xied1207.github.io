@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="ilcSPlwwU8KWcf5TTPq1-xut_7sbrE9U5EuF9S1fR88" />
+  <meta charset="utf-8">
+  
+  <title>[Ng]Machine Learning Week 4-5 Notes神经网络 | 董 燮 | Shia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Model Representation 模型形式 神经元：计算单位最简化的模型形式如下：输入层input layer-&amp;gt;隐藏层hidden layer-&amp;gt;输出层output layera :第j层第i个激活单元Θ :使j层传向j+1层的权重矩阵计算激活单元的值：每一层都有一个权重矩阵，如图所示的权重矩阵为3×4矩阵的大小为：传入层的单元数×（传出层的单元数+1）多类别分类问题输出值层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Ng]Machine Learning Week 4-5 Notes神经网络">
+<meta property="og:url" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/index.html">
+<meta property="og:site_name" content="董 燮 | Shia">
+<meta property="og:description" content="Model Representation 模型形式 神经元：计算单位最简化的模型形式如下：输入层input layer-&amp;gt;隐藏层hidden layer-&amp;gt;输出层output layera :第j层第i个激活单元Θ :使j层传向j+1层的权重矩阵计算激活单元的值：每一层都有一个权重矩阵，如图所示的权重矩阵为3×4矩阵的大小为：传入层的单元数×（传出层的单元数+1）多类别分类问题输出值层">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/1.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/2.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/3.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/4.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/5.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/6.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/7.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/8.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/9.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/10.png">
+<meta property="og:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/11.png">
+<meta property="og:updated_time" content="2018-02-04T05:19:05.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Ng]Machine Learning Week 4-5 Notes神经网络">
+<meta name="twitter:description" content="Model Representation 模型形式 神经元：计算单位最简化的模型形式如下：输入层input layer-&amp;gt;隐藏层hidden layer-&amp;gt;输出层output layera :第j层第i个激活单元Θ :使j层传向j+1层的权重矩阵计算激活单元的值：每一层都有一个权重矩阵，如图所示的权重矩阵为3×4矩阵的大小为：传入层的单元数×（传出层的单元数+1）多类别分类问题输出值层">
+<meta name="twitter:image" content="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/scrollUp/image.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">董 燮 | Shia</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/xied1207" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="https://weibo.com/evetea/" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">董 燮 | Shia</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="https://github.com/xied1207" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="https://weibo.com/evetea/" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="xied1207.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ng-Machine-Learning-Week-4-5-Notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ng-Machine-Learning-Week-4-5-Notes/" class="article-date">
+  <time datetime="2018-02-04T05:11:48.000Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Ng]Machine Learning Week 4-5 Notes神经网络
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><b>Model Representation 模型形式</b></p>
+<p>神经元：计算单位<br>最简化的模型形式如下：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/1.png" alt=""><br>输入层input layer-&gt;隐藏层hidden layer-&gt;输出层output layer<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/2.png" alt=""><br>a :第j层第i个激活单元<br>Θ :使j层传向j+1层的权重矩阵<br>计算激活单元的值：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/3.png" alt=""><br>每一层都有一个权重矩阵，如图所示的权重矩阵为3×4<br>矩阵的大小为：传入层的单元数×（传出层的单元数+1）<br>多类别分类问题输出值层不是一个单元而是多个单元：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/4.png" alt=""><br>此时分类的结果是第三类</p>
+<p><b>Cost Function损失函数</b></p>
+<p>L = 网络中的总层数<br>sl =第l层的单元数<br>K = 输出单元数<br>逻辑回归的损失函数为：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/5.png" alt=""><br>基于逻辑回归的损失函数，我们可以推导出神经网络的损失函数。<br>神经网络的损失函数为：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/6.png" alt=""><br>第一部分为对输出层每一个单元的逻辑回归损失进行累加，第二部分是整个神经网络中所有权重的平方累加</p>
+<p><b>Backpropagation Algorithm反向传播算法</b></p>
+<p>目的是为了使损失函数值最小-&gt;对损失函数求偏导数<br>从输出层开始计算每一层的δ（误差），δ可以用来计算偏导数<br>反向传播过程：<br>第一步：将x输入输入层<br>第二步：实现向前传播计算输出层<br>第三步：计算输出层的误差=输出值-y<br>第四步：通过反向传播计算隐藏层的误差<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/7.png" alt=""><br>并且定义：<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/8.png" alt=""><br>第五步：计算大delta，从而得到损失函数的偏导数<br><img src="/Ng-Machine-Learning-Week-4-5-Notes/9.png" alt=""><br><img src="/Ng-Machine-Learning-Week-4-5-Notes/10.png" alt=""><br>从而可以用梯度下降的方法求解</p>
+<p><b>Gradient Checking梯度检查</b></p>
+<p><img src="/Ng-Machine-Learning-Week-4-5-Notes/11.png" alt=""><br>当ϵ很小时，计算结果≈大delta值，可以认为反向传播算法计算正确。这种计算方法可能会非常缓慢。</p>
+<p><b>Random Initialization随机初始化</b></p>
+<p>不能将神经网络中的所有权重初始化为0——当进行反向传播时，所有的节点都会变成相同值，因而应当在某个值域范围内[-ϵ,ϵ]随机对权重进行赋值。</p>
+<p><b>Putting it Together整合</b></p>
+<p>首先，选择一个神经网络架构：确定层数，每一隐藏层有多少个单元<br>-输入单元数为特征数量<br>-输出单元数为类别数量<br>-每一隐藏层的单元数越多，模型表现越好，但是需要平衡表现与计算花费<br>-默认只有一层隐藏层，如果有多层隐藏层，最好每一隐藏层有相同的单元数</p>
+<p>训练一个神经网络：<br>Step 1：随机初始化权重<br>Step 2：使用正向传播计算输出值<br>Step 3：计算损失函数<br>Step 4：使用反向传播计算偏导数<br>Step 5：通过梯度检查确定反向传播正常运行，然后不需要继续检查<br>Step 6：使用梯度下降或者其他优化函数降低损失函数值，从而找到最优的权重θ</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://xied1207.github.io/Ng-Machine-Learning-Week-4-5-Notes/" data-id="cjd8c96vv0003pcmbfu1xrl5l" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Ng-Machine-Learning-Week-3-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[Ng]Machine Learning Week 3 Notes逻辑回归与正则化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shia Dong<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.transform.js"></script>
+<script src="/js/menu.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/scrollUp.js"></script>
+
+  </div>
+</body>
+</html>
